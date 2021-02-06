@@ -28,4 +28,4 @@ Implement the following operations:
 7. Find a node in O (1)		- Done
 
 > NOTE: With Traditional Linked List searching a element in O(1) is not possible that is one of the disadvantages of using LinkedList. to achieve this i used a map to maintain index of every distinct elements present in the list and then by using map function we can get the index of the first occurance of the element in the list.
-if not found it prints 'Not Found'. to manage this map we create a new map everytime a some changes are done with list. this is just to demonstrate a way to find index of element in O(1). Using this approach increases the complexity of other operations on the list to O(n). so it is not advisable to use such methods to improve search complexity.
+if not found it prints 'Not Found'. to manage this map we update the map by creating a new temporary map everytime some changes are done with list. this is just to demonstrate a way to find index of element in O(1). Using this approach increases the complexity of other operations on the list to O(n). so it is not advisable to use such methods to improve search complexity.
