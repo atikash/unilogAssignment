@@ -1,9 +1,11 @@
 package com.unilog.atikash;
 
+import java.util.HashMap;
+
 public class DoublyLL<T> {
     private Node<T> head;
     private Node<T> tail;
-
+    HashMap<T,Integer> nodesMap= new HashMap<>();
     /*
      * Return The Size of list
      */
@@ -35,7 +37,6 @@ public class DoublyLL<T> {
                 temp = temp.getNextNode();
             }
             System.out.println();
-
         }
     }
 
@@ -58,7 +59,7 @@ public class DoublyLL<T> {
             head.setPreviousNode(node);
             head=node;
         }
-
+        manageMap();
     }
     /*
      * Insert at Last
@@ -75,6 +76,7 @@ public class DoublyLL<T> {
             tail.setNextNode(node);
             tail=node;
         }
+        manageMap();
     }
 
     /*
@@ -99,6 +101,8 @@ public class DoublyLL<T> {
             temp.setNextNode(node);
             node.setPreviousNode(temp);
         }
+
+        manageMap();
     }
 
     /*
@@ -132,13 +136,15 @@ public class DoublyLL<T> {
             temp.getPreviousNode().setNextNode(node);
             temp=null;
         }
+
+        manageMap();
         return data;
     }
 
     /*
      * Delete from Last
      */
-    void deleteLast()
+    public void deleteLast()
     {
         // Base case
         if (head == null ) {
@@ -158,12 +164,14 @@ public class DoublyLL<T> {
             node.setNextNode(null);
             tail = node;
         }
+
+        manageMap();
     }
 
     /*
      * Delete from First
      */
-    void deleteFirst()
+    public void deleteFirst()
     {
 
         if (head == null ) {
@@ -182,8 +190,56 @@ public class DoublyLL<T> {
             head = node;
 
         }
+
+        manageMap();
     }
 
+    public void manageMap(){
+        HashMap<T,Integer> tempMap= new HashMap<>();
+        int counter=0;
+        if (head == null) {
+            System.out.println("ERROR : list is empty So, Cannot perform traversal and deletion operations. Please add some elements");
+        } else {
+            Node<T> temp = head;
+            while (temp != null) {
+                if (!tempMap.containsKey(temp.getData())) {
+                    tempMap.put(temp.getData(), counter++);
+                }
+                temp = temp.getNextNode();
+            }
+
+            nodesMap = tempMap;
+
+        }
+
+    }
+
+    /*
+     * Can find yhe first Index of the element to search in O(1) using HashMap.
+     */
+
+    public Integer findFirstOccurance(T node){
+        Integer index = null;
+        if(node == null)
+        {
+            System.out.println("provide valid element to search");
+        }
+        else if(nodesMap==null)
+        {
+            System.out.println("no cached map to search element");
+        }
+        else
+        {
+             index = nodesMap.get(node);
+
+        }
+        if(index==null)
+        {
+            return -1;
+        }
+        else
+        return index;
+    }
 
 
 }
