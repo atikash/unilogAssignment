@@ -13,16 +13,19 @@ class Node<T> {
 
 Implement the following operations:
 
-1. Add node first
+1. Add node first 		 	- Done
+  
+2. Add node last			- Done
 
-2. Add node last
+3. Add node at an index		- Done
+	
+4. Remove first node 		- Done
 
-3. Add node at an index
+5. Remove last node			- Done
 
-4. Remove first node
+6. Remove node at an index	-Done
 
-5. Remove last node
+7. Find a node in O (1)		- Done
 
-6. Remove node at an index
-
-7. Find a node in O (1)
+> NOTE: With Traditional Linked List searching a element in O(1) is not possible that is one of the disadvantages of using LinkedList. to achieve this i used a map to maintain index of every distinct elements present in the list and then by using map function we can get the index of the first occurance of the element in the list.
+if not found it prints 'Not Found'.
